@@ -7,8 +7,8 @@
 //              the player gets in, the Radioport hands its station to the car by setting the
 //              receiver directly and the car resumes its last station the same way, so the
 //              display keeps whatever it showed last. This writes both values from the receiver
-//              after each of those moments, and once more a beat later so the order the mount
-//              handlers run in never matters.
+//              after each of those moments, whenever the engine reports the station changing,
+//              and twice more on a timer so the order the mount handlers run in never matters.
 // File Version: 0.1.0
 // Credits: psiberx (Codeware), DigitalVixen (RedLogger)
 // ======================================================================================
@@ -51,10 +51,30 @@ public func VRDF_Sync(vehicle: wref<VehicleObject>, reason: String) -> Void {
 
 public class VRDFSyncTick extends DelayCallback {
   public let vehicle: wref<VehicleObject>;
+  public let reason: String;
 
   public func Call() -> Void {
-    VRDF_Sync(this.vehicle, "after mounting");
+    VRDF_Sync(this.vehicle, this.reason);
   }
+}
+
+public func VRDF_SyncLater(vehicle: wref<VehicleObject>, seconds: Float, reason: String) -> Void {
+  if !IsDefined(vehicle) { return; }
+  let delay = GameInstance.GetDelaySystem(vehicle.GetGame());
+  if !IsDefined(delay) { return; }
+  let tick = new VRDFSyncTick();
+  tick.vehicle = vehicle;
+  tick.reason = reason;
+  delay.DelayCallback(tick, seconds);
+}
+
+// The engine tells the player when the receiver's station changes, whoever changed it. A station
+// memory mod that sets the receiver directly, a second or more after mounting, is caught here.
+@wrapMethod(PlayerPuppet)
+protected cb func OnVehicleRadioStationChanged(evt: ref<VehicleRadioStationChanged>) -> Bool {
+  let result: Bool = wrappedMethod(evt);
+  VRDF_Sync(this.GetMountedVehicle(), "station changed");
+  return result;
 }
 
 // The Radioport hands its station to the car here, by setting the receiver directly.
@@ -72,12 +92,8 @@ protected cb func OnMountingEvent(evt: ref<MountingEvent>) -> Bool {
   let vehicle = this.GetVehicle();
   if IsDefined(this.m_mountedPlayer) && IsDefined(vehicle) && VehicleComponent.IsDriverSlot(evt.request.lowLevelMountingInfo.slotId.id) {
     VRDF_Sync(vehicle, "mounting");
-    let delay = GameInstance.GetDelaySystem(vehicle.GetGame());
-    if IsDefined(delay) {
-      let tick = new VRDFSyncTick();
-      tick.vehicle = vehicle;
-      delay.DelayCallback(tick, 0.3);
-    }
+    VRDF_SyncLater(vehicle, 0.3, "after mounting");
+    VRDF_SyncLater(vehicle, 1.5, "after settling");
   }
   return result;
 }
