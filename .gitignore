@@ -1,0 +1,14 @@
+# Claude Code (local only - never commit; these are internal notes)
+CLAUDE.md
+
+# Media - screenshots and GIMP sources live locally, never in the repo
+images/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+.history/
+*.log
