@@ -7,7 +7,7 @@ Getting into a car with the Radioport on hands the Radioport's station to the ca
 the display, and a car that resumes its last station does the same, so the display keeps showing
 whatever it showed last. This mod writes the display from the radio itself each time you get in.
 
-**Nexus:** not yet released.
+**Nexus:** <https://www.nexusmods.com/cyberpunk2077/mods/33736>
 **Source:** <https://github.com/spuddeh/cp2077-vehicle-radio-display-fix>
 
 ## Requirements
