@@ -6,14 +6,18 @@
     "vehicle-radio-display-fix": {
       "displayName": "Vehicle Radio Display Fix",
       "fileBaseName": "VehicleRadioDisplayFix",
-      "contentDir": ["r6"],
-      "installDir": ["r6"],
+      "contentDir": [
+        "r6"
+      ],
+      "installDir": [
+        "r6"
+      ],
       "nexus_mod_id": 0,
       "category": "main",
       "primary_mod_manager_download": true,
       "show_requirements_pop_up": true,
       "update_mod_version": true,
-      "currentVersion": "0.1.0"
+      "currentVersion": "1.0.0"
     }
   }
 }

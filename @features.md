@@ -1,6 +1,6 @@
 # Features
 
-## Implemented (compiled, not yet verified in game)
+## Implemented
 
 - The car's radio display shows the station that is playing and whether the radio is on, after
   getting in with the Radioport on, after getting in with the car resuming its last station, and

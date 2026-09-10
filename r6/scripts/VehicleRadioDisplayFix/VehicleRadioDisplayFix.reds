@@ -9,7 +9,7 @@
 //              display keeps whatever it showed last. This writes both values from the receiver
 //              after each of those moments, whenever the engine reports the station changing,
 //              and twice more on a timer so the order the mount handlers run in never matters.
-// File Version: 0.1.0
+// File Version: 1.0.0
 // Credits: psiberx (Codeware), DigitalVixen (RedLogger)
 // ======================================================================================
 

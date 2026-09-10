@@ -1,0 +1,56 @@
+[center][color=#ffff00][size=6][b]Vehicle Radio Display Fix[/b][/size][/color]
+[i]The car's radio display shows the station that is actually playing.[/i][/center]
+[line]
+[color=#ffff00][size=5][b]Description[/b][/size][/color]
+Get into a car with the Radioport playing, and the car takes over the Radioport's station. The display on the dash does not follow: it keeps showing whatever station the car was on last time, while a different one plays. The same thing happens when a car resumes its own station as you get back in. Pick a station from the radio menu and the display catches up, but nothing you do on the way in fixes it.
+
+The cause is in the game's scripts. The display reads two values the game writes only when you pick a station or press the radio key. The Radioport handoff and the car's own resume set the radio directly and never write them.
+
+This mod writes those two values from the radio itself each time you get in, and again whenever the game reports the station changing. The display can only ever show what is playing.
+
+[line]
+[color=#ffff00][size=5][b]Features[/b][/size][/color]
+[list]
+[*][b]Right on entry.[/b] Radioport on, radio resumed, or a station mod switching the station as you sit down: the display shows the station that is playing.
+[*][b]Right on re-entry.[/b] Get out and back in as many times as you like.
+[*][b]Off means off.[/b] A car with the radio off shows the display off, not a leftover station.
+[*][b]Nothing to configure.[/b] No settings, no keybinds, no menu.
+[*][b]Safe to remove.[/b] Nothing is written to your save and no game file is touched.
+[/list]
+[line]
+[color=#ffff00][size=5][b]Requirements[/b][/size][/color]
+[list]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/1511]Redscript[/url]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/7780]Codeware[/url]
+[/list]
+[color=#ffff00][size=4][b]Optional[/b][/size][/color]
+[list]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/31920]RedLogger[/url] - the mod writes one line per display update to [font=Courier New]r6\logs\mods\[/font]. Only needed if something looks wrong and you want to know why.
+[/list]
+[line]
+[color=#ffff00][size=5][b]Installation[/b][/size][/color]
+Install with your mod manager, or extract the archive into your Cyberpunk 2077 folder so you end up with:
+[code]Cyberpunk 2077\r6\scripts\VehicleRadioDisplayFix\VehicleRadioDisplayFix.reds[/code]
+
+[color=#ffff00][size=4][b]Uninstall[/b][/size][/color]
+Delete that folder. No save cleanup is needed.
+
+[line]
+[color=#ffff00][size=5][b]Compatibility[/b][/size][/color]
+[list]
+[*]Works with station memory mods (Always My Radio Station, Simple Radio Control) and with mods that add stations. It reads the radio, so whatever changed the station, the display follows.
+[*]Replaces [url=https://www.nexusmods.com/cyberpunk2077/mods/24353]Radio Board Fix[/url]. That mod records the station once, at the start of getting in, before the Radioport or a station mod has changed it, so the display stays wrong in those cases. Keeping both installed does no harm; this one covers everything it does.
+[*]Nothing is replaced. Three game functions are wrapped, and each one still runs its original code.
+[/list]
+[line]
+[color=#ffff00][size=5][b]Source[/b][/size][/color]
+The source is on [url=https://github.com/spuddeh/cp2077-vehicle-radio-display-fix]GitHub[/url].
+
+[line]
+[color=#ffff00][size=5][b]Credits[/b][/size][/color]
+[list]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/7780]Codeware[/url] by psiberx.
+[/list]
+[line]
+[color=#ffff00][size=5][b]Disclaimer[/b][/size][/color]
+This mod was developed with the assistance of an LLM. All in-game testing and code validation was performed by a human. No rogue AIs were permitted through the Blackwall.

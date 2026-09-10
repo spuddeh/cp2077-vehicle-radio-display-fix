@@ -8,6 +8,7 @@ the display, and a car that resumes its last station does the same, so the displ
 whatever it showed last. This mod writes the display from the radio itself each time you get in.
 
 **Nexus:** not yet released.
+**Source:** <https://github.com/spuddeh/cp2077-vehicle-radio-display-fix>
 
 ## Requirements
 
@@ -22,3 +23,8 @@ mod writes a log to `r6/logs/mods/`; without it the logging compiles away.
 Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). You may use, modify, and share
 this mod and its source for any **noncommercial** purpose, as long as you credit the original
 creator. Commercial use, including paid mods or selling, is not permitted.
+
+## Disclaimer
+
+This mod was developed with the assistance of an LLM. All in-game testing and code validation was
+performed by a human. No rogue AIs were permitted through the Blackwall.
